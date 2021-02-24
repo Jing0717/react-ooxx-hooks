@@ -6,8 +6,21 @@ const Board = () => {
     squares: Array(9).fill(null),
   }
   const [state, setState] = useState(initialState);
-  const renderSquare = () => {
-    return <Square value={state} />;
+  const handleClick = (i) => {
+    const squares = state.squares.slice();
+    console.log(squares);
+    squares[i] = 'X';
+    console.log(squares);
+    // setState({ squares: squares });
+  }
+
+  const renderSquare = (i) => {
+    return (
+      <Square
+        value={state.squares[i]}
+        onClick={handleClick(i)}
+      />
+    )
   }
   const status = 'Next player: X';
   return (

@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Square = () => {
-    const [state, setState] = useState(null);
+const Square = ({value, onClick}) => {
     return (
-        <button className="square" onClick={() => { setState('X'); }}>
-            {state}
+        <button className="square" onClick={onClick}>
+            {value}
         </button>
-    );
+    )
 }
 export default Square;
