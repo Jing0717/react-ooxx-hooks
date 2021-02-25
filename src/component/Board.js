@@ -4,23 +4,29 @@ import Square from './Square';
 const Board = () => {
   const initialState = {
     squares: Array(9).fill(null),
+    xIsNext: true,
   }
   const [state, setState] = useState(initialState);
   const handleClick = (i) => {
     const squares = [...state.squares];
-    squares[i] = 'X';
-    setState({squares});
+    squares[i] = state.xIsNext ? 'X' : 'O';
+    setState(
+      {
+        squares: squares,
+        xIsNext: !state.xIsNext,
+      }
+    );
   }
 
   const renderSquare = (i) => {
     return (
       <Square
         value={state.squares[i]}
-        onClick={() => {handleClick(i)}}
+        onClick={() => { handleClick(i) }}
       />
     )
   }
-  const status = 'Next player: X';
+  const status = 'Next player: ' + (state.xIsNext ? 'X' : 'O');
   return (
     <div>
       <div className="status">{status}</div>
