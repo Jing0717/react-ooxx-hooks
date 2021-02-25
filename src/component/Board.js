@@ -7,18 +7,16 @@ const Board = () => {
   }
   const [state, setState] = useState(initialState);
   const handleClick = (i) => {
-    const squares = state.squares.slice();
-    console.log(squares);
+    const squares = [...state.squares];
     squares[i] = 'X';
-    console.log(squares);
-    // setState({ squares: squares });
+    setState({squares});
   }
 
   const renderSquare = (i) => {
     return (
       <Square
         value={state.squares[i]}
-        onClick={handleClick(i)}
+        onClick={() => {handleClick(i)}}
       />
     )
   }
