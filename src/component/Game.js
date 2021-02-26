@@ -52,8 +52,6 @@ const Game = () => {
     status = 'Next player: ' + (state.xIsNext ? 'X' : 'O');
   }
 
-
-
   const handleClick = (i) => {
     const history = state.history;
     const current = history[history.length - 1];
@@ -75,6 +73,7 @@ const Game = () => {
 
   const jumpTo = (step) => {
     setState({
+      ...state,
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
